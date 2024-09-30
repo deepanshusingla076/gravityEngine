@@ -5,206 +5,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Gravity Bounce Effect</title>
     <style>
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
             width: 100%;
             height: 100%;
-            background-color: #f0f0f0;
+            background-color: #f1f1f1;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            user-select: none;
         }
 
         .container {
-            width: 120px;
-            height: 60px;
-            border-radius: 10px;
-            cursor: grab;
-            position: absolute;
-            top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        #search { background-color: #f44336; }
-        #home { background-color: #4caf50; }
-        #about { background-color: #ffeb3b; color: black; }
-        #images { background-color: #009688; }
-        #maps { background-color: #673ab7; }
-        #youtube { background-color: #e91e63; }
-        #drive { background-color: #3f51b5; }
-        #gmail { background-color: #ff5722; }
-        #calendar { background-color: #795548; }
-        #news { background-color: #607d8b; }
-
-        .search-box {
-            width: 400px;
-            height: 80px;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 20px;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            cursor: grab;
-        }
-
-        .search-box img {
-            width: 120px;
-            margin-right: 8px;
-        }
-
-        .search-input {
+            position: relative;
             width: 100%;
             height: 100%;
-            border: none;
-            outline: none;
-            font-size: 18px;
-            padding-left: 10px;
         }
 
-        .search-input::placeholder {
-            color: #999;
+        .heading {
+            font-size: 36px;
+            color: #333;
+            position: absolute;
+            cursor: move;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            cursor: move;
+        }
+
+        input {
+            width: 300px;
+            height: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(62, 167, 132);
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(19, 198, 139);
+        }
+
+        #topbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: #ffffff;
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .box2d {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .box2d:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .box2d span {
+            font-size: 14px;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="search-box" id="searchBox">
-        <img src="https://www.google.co.in/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo">
-        <input type="text" class="search-input" placeholder="Search Google or type a URL">
+    <div class="container">
+        <div class="heading" id="heading">Google Gravity</div>
+        <div class="search-bar" id="searchBar">
+            <input type="text" placeholder="Search">
+            <button>Search</button>
+        </div>
+
+        <table id="topbar">
+            <tr>
+                <td class="box2d" onClick="location.href = 'https://plus.google.com/?gpsrc=ogpy0&tab=wX';"><span>+You</span></td>
+                <td class="box2d selected" onClick="location.href = 'http://www.google.com/webhp?hl=en&tab=ww';"><span>Search</span></td>
+                <td class="box2d" onClick="location.href = 'http://www.google.com/imghp?hl=en&tab=wi';"><span>Images</span></td>
+                <td class="box2d" onClick="location.href = 'http://maps.google.com/maps?hl=en&tab=wl';"><span>Maps</span></td>
+                <td class="box2d" onClick="location.href = 'https://play.google.com/?hl=en&tab=w8';"><span>Play</span></td>
+                <td class="box2d" onClick="location.href = 'http://www.youtube.com/?tab=w1';"><span>YouTube</span></td>
+                <td class="box2d" onClick="location.href = 'http://news.google.com/nwshp?hl=en&tab=wn';"><span>News</span></td>
+                <td class="box2d" onClick="location.href = 'https://mail.google.com/mail/?tab=wm';"><span>Gmail</span></td>
+                <td class="box2d" onClick="location.href = 'https://drive.google.com/?tab=wo';"><span>Drive</span></td>
+                <td class="box2d" onClick="location.href = 'https://www.google.com/calendar?tab=wc';"><span>Calendar</span></td>
+            </tr>
+        </table>
     </div>
 
-    <div class="container" id="search">Search</div>
-    <div class="container" id="home">Home</div>
-    <div class="container" id="about">About Us</div>
-    <div class="container" id="images">Images</div>
-    <div class="container" id="maps">Maps</div>
-    <div class="container" id="youtube">YouTube</div>
-    <div class="container" id="drive">Drive</div>
-    <div class="container" id="gmail">Gmail</div>
-    <div class="container" id="calendar">Calendar</div>
-    <div class="container" id="news">News</div>
-
     <script>
-        const gravity = 1;
-        const damping = 0.8;
-        const dragFactor = 0.98;
-        const rotationSpeed = 2;
-
-        class Ball {
-            constructor(element, rotatable = true) {
-                this.element = element;
-                this.radius = Math.min(element.offsetWidth, element.offsetHeight) / 2;
-                this.x = Math.random() * (window.innerWidth - element.offsetWidth);
-                this.y = Math.random() * (window.innerHeight - element.offsetHeight - 80);
-                this.vx = Math.random() * 4 - 2;
-                this.vy = Math.random() * 4 - 2;
-                this.isDragging = false;
-                this.angle = Math.random() * 360;
-                this.rotatable = rotatable;
-                this.isAtBottom = false;
-
-                this.element.style.left = `${this.x}px`;
-                this.element.style.top = `${this.y}px`;
-                this.element.style.transform = `rotate(${this.angle}deg)`;
-                this.element.style.position = 'absolute';
-
-                this.addDragListeners();
-            }
-
-            addDragListeners() {
-                this.element.onmousedown = (event) => {
-                    this.isDragging = true;
-                    let shiftX = event.clientX - this.element.getBoundingClientRect().left;
-                    let shiftY = event.clientY - this.element.getBoundingClientRect().top;
-
-                    const moveAt = (pageX, pageY) => {
-                        this.x = pageX - shiftX;
-                        this.y = pageY - shiftY;
-                        this.x = Math.max(0, Math.min(this.x, window.innerWidth - this.element.offsetWidth));
-                        this.y = Math.max(0, Math.min(this.y, window.innerHeight - this.element.offsetHeight - 80));
-                        this.element.style.left = `${this.x}px`;
-                        this.element.style.top = `${this.y}px`;
-                    };
-
-                    const onMouseMove = (event) => moveAt(event.pageX, event.pageY);
-
-                    document.addEventListener('mousemove', onMouseMove);
-
-                    this.element.onmouseup = () => {
-                        this.isDragging = false;
-                        document.removeEventListener('mousemove', onMouseMove);
-                        this.element.onmouseup = null;
-                    };
-                };
-
-                this.element.ondragstart = () => false;
-            }
-
-            updatePosition() {
-                if (!this.isDragging) {
-                    this.vy += gravity;
-                    this.vx *= dragFactor;
-                    this.vy *= dragFactor;
-
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.rotatable && !this.isAtBottom) {
-                        this.angle += rotationSpeed;
-                        this.element.style.transform = `rotate(${this.angle}deg)`;
-                    }
-
-                    this.handleScreenCollision();
-                }
-
-                this.element.style.left = `${this.x}px`;
-                this.element.style.top = `${this.y}px`;
-            }
-
-            handleScreenCollision() {
-                if (this.x <= 0 || this.x + this.element.offsetWidth >= window.innerWidth) {
-                    this.vx *= -damping;
-                    if (this.x <= 0) this.x = 0;
-                    if (this.x + this.element.offsetWidth >= window.innerWidth) {
-                        this.x = window.innerWidth - this.element.offsetWidth;
-                    }
-                }
-
-                if (this.y + this.element.offsetHeight >= window.innerHeight) {
-                    this.vy *= -damping;
-                    this.y = window.innerHeight - this.element.offsetHeight;
-                }
-            }
-        }
-
         const elements = [
-            document.getElementById('searchBox'),
-            ...document.querySelectorAll('.container')
+            document.getElementById('heading'),
+            document.getElementById('searchBar'),
+            ...document.querySelectorAll('#topbar .box2d')
         ];
 
-        const balls = elements.map(element => new Ball(element));
+        elements.forEach(element => {
+            let posX = Math.random() * (window.innerWidth - 200);
+            let posY = Math.random() * (window.innerHeight - element.offsetHeight - 50);
+            let velocityY = 0;
+            const gravity = 1.8;
+            const bounceFactor = 0.65;
+            let isDragging = false;
+            let lastTime = Date.now();
+            const interval = 50;
 
-        function animate() {
-            balls.forEach(ball => ball.updatePosition());
-            requestAnimationFrame(animate);
-        }
+            element.style.left = posX + 'px';
+            element.style.top = posY + 'px';
+            element.style.position = 'absolute';
 
-        animate();
+            function bounce() {
+                const currentTime = Date.now();
+                if (currentTime - lastTime >= interval) {
+                    lastTime = currentTime;
+
+                    if (!isDragging) {
+                        velocityY += gravity;
+                        posY += velocityY;
+
+                        if (posY + element.offsetHeight >= window.innerHeight) {
+                            posY = window.innerHeight - element.offsetHeight;
+                            velocityY = -velocityY * bounceFactor;
+                        }
+
+                        if (posY < 0) {
+                            posY = 0;
+                            velocityY = -velocityY * bounceFactor;
+                        }
+
+                        element.style.left = posX + 'px';
+                        element.style.top = posY + 'px';
+                    }
+                }
+
+                requestAnimationFrame(bounce);
+            }
+
+            bounce();
+
+            element.onmousedown = function(event) {
+                isDragging = true;
+                let shiftX = event.clientX - element.getBoundingClientRect().left;
+                let shiftY = event.clientY - element.getBoundingClientRect().top;
+
+                function moveAt(pageX, pageY) {
+                    posX = pageX - shiftX;
+                    posY = pageY - shiftY;
+
+                    posX = Math.max(0, Math.min(posX, window.innerWidth - element.offsetWidth));
+                    posY = Math.max(0, Math.min(posY, window.innerHeight - element.offsetHeight - 50));
+
+                    element.style.left = posX + 'px';
+                    element.style.top = posY + 'px';
+                }
+
+                function onMouseMove(event) {
+                    moveAt(event.pageX, event.pageY);
+                }
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                element.onmouseup = function() {
+                    isDragging = false;
+                    document.removeEventListener('mousemove', onMouseMove);
+                    element.onmouseup = null;
+                };
+            };
+
+            element.ondragstart = function() {
+                return false;
+            };
+        });
     </script>
 </body>
 </html>
